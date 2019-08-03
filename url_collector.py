@@ -1,3 +1,4 @@
+from __future__ import print_function
 from bs4 import BeautifulSoup
 import urllib.request
 import pandas as pd
@@ -24,8 +25,8 @@ num_pages=557
 
 for i in range(1, num_pages):
   time.sleep(120) #make sure you give enough time between page loads to avoid server overload
-  print(f'Reading page {i}')
-  list_page_url=f'{LIST_URL}&page={i}'
+  print('Reading page {}'.format(i))
+  list_page_url='{}&page={}'.format(LIST_URL , i)
   list_page=get(list_page_url, headers=hdr)
   list_soup = BeautifulSoup(list_page.content, 'html.parser')
   book_table=list_soup.find('table', attrs={'class':'tableList js-dataTooltip'})
